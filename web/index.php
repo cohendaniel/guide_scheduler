@@ -4,10 +4,10 @@
 	<title>Bowdoin College Tour Guide Schedule</title>
 </head>
 <body>
-
+<p>Is this working?</p>
 <?php
 
-	echo "Hello fools.";
+	echo "Hello everyone.";
 	//include_once("home.html");
 	require('includes/init.php');
 	//require('../vendor/autoload.php');
