@@ -61,6 +61,7 @@
 
 <p style="text-align: center;"><input name="run" type="submit" value="Make Schedule" /></p>
 </form>
+</body>
 
 <?php
 
@@ -70,6 +71,7 @@
 	//require('../vendor/autoload.php');
 	
 	if (isset($_POST['submit'])) {
+		echo "Submit pressed";
 		
 		$days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday');
 		
@@ -107,5 +109,5 @@
 		}
 	}
 ?>
-</body>
+
 </html>
