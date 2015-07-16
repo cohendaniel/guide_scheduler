@@ -1,4 +1,5 @@
 <?php
+	echo 'Including database.<br/>';
 	$db_host = 'localhost';
 	$db_user = 'root';
 	$db_password = '';
