@@ -72,7 +72,7 @@
 	require('../vendor/autoload.php');
 	
 	if (isset($_POST['submit'])) {
-		echo "Submit pressed";
+		echo "<h2>Submit pressed</h2>";
 		
 		$days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday');
 		
