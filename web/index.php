@@ -1,8 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bowdoin College Tour Guide Schedule</title>
+</head>
+<body>
+
 <?php
 
 	echo "Hello fools.";
+	//include_once("home.html");
 	require('includes/init.php');
-	require('../vendor/autoload.php');
+	//require('../vendor/autoload.php');
 	
 	if (isset($_POST['submit'])) {
 		
@@ -43,11 +51,6 @@
 	}
 ?>
 
-<html>
-<head>
-	<title>Bowdoin College Tour Guide Schedule</title>
-</head>
-<body>
 <h1 style="text-align: center;">Bowdoin College Tour Guide Availability</h1>
 
 <form enctype="application/x-www-form-urlencoded" method="post" target="_self" action="index.php">
