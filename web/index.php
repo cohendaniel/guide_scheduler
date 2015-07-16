@@ -1,6 +1,7 @@
 <?php
 
 	require('includes/init.php');
+	require('../vendor/autoload.php');
 	
 	if (isset($_POST['submit'])) {
 		
