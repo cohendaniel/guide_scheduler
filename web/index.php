@@ -66,8 +66,9 @@
 <?php
 
 	echo "Hello everyone.";
+	echo getcwd();
 	//include_once("home.html");
-	require('web/includes/init.php');
+	require('includes/init.php');
 	//require('../vendor/autoload.php');
 	
 	if (isset($_POST['submit'])) {
