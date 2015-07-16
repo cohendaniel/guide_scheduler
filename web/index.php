@@ -1,5 +1,6 @@
 <?php
 
+	echo "Hello fools.";
 	require('includes/init.php');
 	require('../vendor/autoload.php');
 	
