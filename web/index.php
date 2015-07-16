@@ -4,52 +4,6 @@
 	<title>Bowdoin College Tour Guide Schedule</title>
 </head>
 <body>
-<p>Is this working?</p>
-<?php
-
-	echo "Hello everyone.";
-	//include_once("home.html");
-	require('includes/init.php');
-	//require('../vendor/autoload.php');
-	
-	if (isset($_POST['submit'])) {
-		
-		$days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday');
-		
-		$avail = '';
-		foreach($days as $day) {
-			$times = '0000';
-			if (isset($_POST[$day])) {
-				$$day = $_POST[$day];
-				if(in_array('930', $$day)) 
-					$times[0] = 1;
-				if(in_array('1130', $$day)) 
-					$times[1] = 1;
-				if(in_array('130', $$day)) 
-					$times[2] = 1;
-				if(in_array('330', $$day)) 
-					$times[3] = 1;
-				$avail = $avail . $times;
-			} else {
-				$avail = $avail . $times;
-			}
-		}
-		
-		if(submit($_POST['guidename'], $_POST['gender'], $_POST['class_year'], $_POST['major'], $_POST['state'], $_POST['ethnicity'], $_POST['school'], $_POST['athlete'], $_POST['study_abroad'], $_POST['num_tours'], $avail)) {
-			echo 'Submitted! <br/>';
-		} else {
-			echo 'Failed to submit... <br/>';
-		}
-	}
-	
-	if (isset($_POST['run'])) {
-		if (make_schedule()) {
-			echo 'Made schedule! <br/>';
-		} else {
-			echo 'Failed to make schedule. <br/>';
-		}
-	}
-?>
 
 <h1 style="text-align: center;">Bowdoin College Tour Guide Availability</h1>
 
@@ -107,5 +61,51 @@
 
 <p style="text-align: center;"><input name="run" type="submit" value="Make Schedule" /></p>
 </form>
+
+<?php
+
+	echo "Hello everyone.";
+	//include_once("home.html");
+	require('includes/init.php');
+	//require('../vendor/autoload.php');
+	
+	if (isset($_POST['submit'])) {
+		
+		$days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday');
+		
+		$avail = '';
+		foreach($days as $day) {
+			$times = '0000';
+			if (isset($_POST[$day])) {
+				$$day = $_POST[$day];
+				if(in_array('930', $$day)) 
+					$times[0] = 1;
+				if(in_array('1130', $$day)) 
+					$times[1] = 1;
+				if(in_array('130', $$day)) 
+					$times[2] = 1;
+				if(in_array('330', $$day)) 
+					$times[3] = 1;
+				$avail = $avail . $times;
+			} else {
+				$avail = $avail . $times;
+			}
+		}
+		
+		if(submit($_POST['guidename'], $_POST['gender'], $_POST['class_year'], $_POST['major'], $_POST['state'], $_POST['ethnicity'], $_POST['school'], $_POST['athlete'], $_POST['study_abroad'], $_POST['num_tours'], $avail)) {
+			echo 'Submitted! <br/>';
+		} else {
+			echo 'Failed to submit... <br/>';
+		}
+	}
+	
+	if (isset($_POST['run'])) {
+		if (make_schedule()) {
+			echo 'Made schedule! <br/>';
+		} else {
+			echo 'Failed to make schedule. <br/>';
+		}
+	}
+?>
 </body>
 </html>
