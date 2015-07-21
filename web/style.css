@@ -1,0 +1,41 @@
+form {
+	margin-right:18%;
+	margin-left:18%;
+}
+
+#background-color {
+	background-color: #d3d3d3;
+	margin-right: 15%;
+	margin-left: 15%;
+}
+
+#availability {
+	margin-left: 60%;
+	width: 50%;
+}
+
+#info {
+	float: left;
+	width: 50%;
+}
+
+.b {
+	font-weight: bold;
+}
+
+.clear {
+	clear: both;
+}
+
+.day {
+	margin-bottom: 40px;
+}
+
+.section-header {
+	margin-top: 0px;
+	text-align: center;
+}
+
+.vertical-line {
+	border-right: thick solid black;
+}

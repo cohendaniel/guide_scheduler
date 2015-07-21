@@ -1,75 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Bowdoin College Tour Guide Schedule</title>
-</head>
-<body>
-
-<h1 style="text-align: center;">Bowdoin College Tour Guide Availability</h1>
-
-<form enctype="application/x-www-form-urlencoded" method="post" target="_self" action="index.php">
-<p>Name: <input type="text" name = "guidename"/></p>
-
-<p>Gender: <select name = "gender"><option value="male">Male</option><option value="female">Female</option></select></p>
-
-<p>Class year: <select name = "class_year"><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option></select></p>
-
-<p>Major: <select name = "major"><option value="philosophy">Philosophy</option><option value="computer science">Computer Science</option><option  value="english">English</option></select></p>
-
-<p>Home state: <select name = "state"><option value="alabama">Alabama</option><option value="idaho">Idaho</option><option value="oregon">Oregon</option></select></p>
-
-<p>Ethnicity: <select name = "ethnicity"><option value="white">White</option><option value="black">Black or African American</option><option value="hispanic">Hispanic</option></select></p>
-
-<p>Public School:</p>
-
-<p><input name="school" type="radio" value="true"/>Yes<input name="school" type="radio" value="false"/>No</p>
-
-<p>Athlete</p>
-
-<p><input name="athlete" type="radio" value="true"/>Yes<input name="athlete" type="radio" value="false"/>No</p>
-
-<p>Study Abroad</p>
-
-<p><input name="study_abroad" type="radio" value="true"/>Yes<input name="study_abroad" type="radio" value="false"/>No</p>
-
-<p>Number of Tours: <input type="text" name = "num_tours"/></p>
-
-<hr />
-<h2 style="text-align: center;">Availability</h2>
-
-<h3>Monday</h3>
-
-<p><input name="monday[]" type="checkbox" value="930" />9:30<input name="monday[]" type="checkbox" value="1130" />11:30<input name="monday[]" type="checkbox" value="130"/>1:30<input name="monday[]" type="checkbox" value="330" />3:30</p>
-
-<h3>Tuesday</h3>
-
-<p><input name="tuesday[]" type="checkbox" value="930" />9:30<input name="tuesday[]" type="checkbox" value="1130" />11:30<input name="tuesday[]" type="checkbox" value="130" />1:30<input name="tuesday[]" type="checkbox" value="330" />3:30</p>
-
-<h3>Wednesday</h3>
-
-<p><input name="wednesday[]" type="checkbox" value="930"/>9:30<input name="wednesday[]" type="checkbox" value="1130"/>11:30<input name="wednesday[]" type="checkbox" value="130"/>1:30<input name="wednesday[]" type="checkbox" value="330"/>3:30</p>
-
-<h3>Thursday</h3>
-
-<p><input name="thursday[]" type="checkbox" value="930"/>9:30<input name="thursday[]" type="checkbox" value="1130"/>11:30<input name="thursday[]" type="checkbox" value="130"/>1:30<input name="thursday[]" type="checkbox" value="330"/>3:30</p>
-
-<h3>Friday</h3>
-
-<p><input name="friday[]" type="checkbox" value="930"/>9:30<input name="friday[]" type="checkbox" value="1130"/>11:30<input name="friday[]" type="checkbox" value="130"/>1:30<input name="friday[]" type="checkbox" value="330"/>3:30</p>
-
-<p style="text-align: center;"><input name="submit" type="submit" value="Submit" /></p>
-
-<p style="text-align: center;"><input name="run" type="submit" value="Make Schedule" /></p>
-</form>
-</body>
-
 <?php
 
 	echo "Hello everyone.";
 	echo getcwd();
-	//include_once("home.html");
+	include('home.html');
 	require('./includes/init.php');
-	require('../vendor/autoload.php');
+	//require('../vendor/autoload.php');
+	
+	if (isset($_POST['enter_info'])) {
+		echo "PRESSED!";
+		header('Location: info.html');
+	}
 	
 	if (isset($_POST['submit'])) {
 		echo "<h2>Submit pressed</h2>";
@@ -102,13 +42,19 @@
 		}
 	}
 	
-	if (isset($_POST['run'])) {
-		if (make_schedule()) {
-			echo 'Made schedule! <br/>';
-		} else {
-			echo 'Failed to make schedule. <br/>';
+	if (isset($_POST['admin'])) {
+		if (empty($_POST['username'])) {
+			echo 'Username field not filled out.';
+		}
+		elseif (empty($_POST['password'])) {
+			echo 'Password field not filled out.';
+		}
+		elseif ($_POST['username'] == 'admissions' && $_POST['password'] == 'abc123') {
+			header('Location: admin.html');
+		}
+		else {
+			echo 'Invalid login. <br/>';
 		}
 	}
+	
 ?>
-
-</html>

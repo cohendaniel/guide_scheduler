@@ -60,7 +60,7 @@ void read_guide_file(char* filename) {
 		std::string line;
 		
 		while (getline(file, line)) {
-			
+
 			std::stringstream ss(line);
 
 			std::string name, class_year, gender, major, ethnicity, state, 
@@ -78,7 +78,7 @@ void read_guide_file(char* filename) {
 			std::getline(ss, num_tours, ',');
 			std::getline(ss, avail, ',');
 				
-			Guide* guide = new Guide(name, std::atoi(class_year.c_str()), major, gender, state, ethnicity, 
+			Guide* guide = new Guide(filename, std::atoi(class_year.c_str()), major, gender, state, ethnicity, 
 						to_bool(public_school), to_bool(athlete), to_bool(study_abroad), 
 						std::atoi(num_tours.c_str()), avail);
 	
@@ -124,6 +124,7 @@ int main(int argc, char* argv[]) {
 	double MUTATE_PROB = 0.01;
 
 	char* fp = argv[1];//"spring2015_2.txt";
+
     read_guide_file(fp);
     
     return 0;

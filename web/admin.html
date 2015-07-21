@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bowdoin College Tour Guide Schedule</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+	<script type = "text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		console.log("in function");
+		$("input").click(function() {
+			console.log("clicked");
+			$.ajax({
+				url: "./includes/functions/make_schedule.php",
+				success: function(result) {
+					$("#myDiv").html(result);
+				}
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+<h1 style="text-align: center;">Bowdoin College Tour Guide Availability</h1>
+
+<input name="make_schedule" type="button" value = "Run" />
+<div id = "myDiv">
+Hi.
+</div>
+
+</body>
+</html>
