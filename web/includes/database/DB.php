@@ -8,10 +8,10 @@
 	
 	if($connection = mysql_connect($db_host, $db_user, $db_password)) {
 		
-		//echo 'Connected to the database server. <br/>';
+		echo 'Connected to the database server. <br/>';
 		
 		if($databse = mysql_select_db($db_name, $connection)) {
-			//echo 'Database has been selected. <br/>';
+			echo 'Database has been selected. <br/>';
 		} else {
 			echo 'Database was not found. <br/>';
 		}
