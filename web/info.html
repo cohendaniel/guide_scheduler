@@ -4,9 +4,9 @@
 	<title>Bowdoin College Tour Guide Schedule</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body class = "no-margin">
 
-<h1 style="text-align: center;">Bowdoin College Tour Guide Availability</h1>
+<h1>Bowdoin College <em>Tour Guide Scheduler</em></h1>
 
 <div id="background-color">
 	<form enctype="application/x-www-form-urlencoded" method="post" target="_self" action="index.php">
@@ -19,7 +19,12 @@
 
 		<p><b>Class year: </b><select name = "class_year"><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option></select></p>
 
-		<p><b>Major: </b><select name = "major"><option value="philosophy">Philosophy</option><option value="computer science">Computer Science</option><option  value="english">English</option></select></p>
+		<p><b>Major: </b>
+			<select name = "major">
+				<option value="philosophy">Philosophy</option>
+				<option value="computer science">Computer Science</option>
+				<option value="english">English</option>
+		</select></p>
 
 		<p><b>Home state: </b><select name = "state"><option value="alabama">Alabama</option><option value="idaho">Idaho</option><option value="oregon">Oregon</option></select></p>
 
