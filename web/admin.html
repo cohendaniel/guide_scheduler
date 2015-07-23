@@ -13,7 +13,10 @@
 			$.ajax({
 				url: "./includes/functions/make_schedule.php",
 				success: function(result) {
-					$("#myDiv").html(result);
+					var output = result.split(",");
+					$("td").html(function(n){
+						return output[n];
+					});
 				}
 			});
 		});
@@ -23,10 +26,108 @@
 <body>
 <h1 style="text-align: center;">Bowdoin College Tour Guide Availability</h1>
 
-<input name="make_schedule" type="button" value = "Run" />
-<div id = "myDiv">
-Hi.
+<div style="text-align: center;">
+<input name="make_schedule" type="button" value = "Generate Schedule" />
 </div>
+<br></br>
+<table>
+	<tr>
+		<th></th>
+		<th class="horiz">Monday</th>
+		<th class="horiz">Tuesday</th>
+		<th class="horiz">Wednesday</th>
+		<th class="horiz">Thursday</th>
+		<th class="horiz">Friday</th>
+	<tr>
+		<th rowspan="3" class="vert">9:30</th>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td class="bold"></td>
+		<td class="bold"></td>
+		<td class="bold"></td>
+		<td class="bold"></td>
+		<td class="bold"></td>
+	</tr>
+	<tr>
+		<th rowspan="3" class="vert">11:30</th>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td class="bold"></td>
+		<td class="bold"></td>
+		<td class="bold"></td>
+		<td class="bold"></td>
+		<td class="bold"></td>
+	</tr>
+	<tr>
+		<th rowspan="3" class="vert">1:30</th>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td class="bold"></td>
+		<td class="bold"></td>
+		<td class="bold"></td>
+		<td class="bold"></td>
+		<td class="bold"></td>
+	</tr>
+	<tr>
+		<th rowspan="3" class="vert">3:30</th>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
 
 </body>
 </html>

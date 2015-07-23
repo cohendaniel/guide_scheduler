@@ -105,6 +105,12 @@ void Schedule::print() {
 	//std::cout << "Fitness: " << fitness << std::endl;
 }
 
+void Schedule::print_html() {
+	for (unsigned int i = 0; i < data.size(); i++) {
+		std::cout << guides[data[i]]->name << ",";
+	}
+}
+
 int Schedule::valid(bool print) {
 	//bool valid = true;
 	int count = 0;

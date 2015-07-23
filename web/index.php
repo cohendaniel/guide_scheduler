@@ -1,7 +1,7 @@
 <?php
 
-	echo "Hello everyone.";
-	echo getcwd();
+	//echo "Hello everyone.";
+	//echo getcwd();
 	include('home.html');
 	require('./includes/init.php');
 	//require('../vendor/autoload.php');

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "debug.h"
+
 #include <iostream>
 #include <bitset>
 #include <string>

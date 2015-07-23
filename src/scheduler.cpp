@@ -5,6 +5,8 @@
 #include <iostream>
 #include <algorithm>
 
+//#define DEBUG
+
 #include "candidate.h"
 
 std::map<int, Guide*> guides;
@@ -37,8 +39,6 @@ bool to_bool(std::string b) {
 int select(std::vector<Schedule> population, int pop_size) {
 	int ind1 = rand() % pop_size;
 	int ind2 = rand() % pop_size;
-	
-	//std::cout << ind1 << ", " << ind2 << std::endl;
 
 	if (population[ind1].getFitness() >= population[ind2].getFitness()) {
 		return ind1;
@@ -78,33 +78,22 @@ void read_guide_file(char* filename) {
 			std::getline(ss, num_tours, ',');
 			std::getline(ss, avail, ',');
 				
-			Guide* guide = new Guide(filename, std::atoi(class_year.c_str()), major, gender, state, ethnicity, 
+			Guide* guide = new Guide(name, std::atoi(class_year.c_str()), major, gender, state, ethnicity, 
 						to_bool(public_school), to_bool(athlete), to_bool(study_abroad), 
 						std::atoi(num_tours.c_str()), avail);
 	
-			std::cout << guide->name << guide->gender << guide->ethnicity << guide->class_year << guide->major << guide->state << guide->public_school
-					  << guide->athlete << guide->study_abroad << guide->num_tours << ": ";
-			
-			/*std::string day, time;
-			
-			while (std::getline(ss, day, '\t')) {
-				if (day == "." || day == "") {
-					break;
-				}
-				std::getline(ss, time, '\t');
-				guide->set_time(day, time);
-			}*/
+			DEBUG(std::cout << guide->name << guide->gender << guide->ethnicity << guide->class_year << guide->major << guide->state << guide->public_school
+					  << guide->athlete << guide->study_abroad << guide->num_tours << ": ";)
 			
 			for (int i = 0; i < 20; i++) {
 				if (guide->times[i] == 1) {
 					slots[i].push_back(num_guides);
 				}
-				std::cout << guide->times[i];
+				DEBUG(std::cout << guide->times[i];)
 			}
-			//std::cout << std::endl;
+			DEBUG(std::cout << "<br>";)
 			
 			guides[num_guides++] = guide;
-			//std::cout << guides[0]->name << std::endl;
 		}
 	}
 	else {
@@ -113,8 +102,43 @@ void read_guide_file(char* filename) {
 	file.close();
 }
 
+void generate_test_file(char* filename) {
+	std::ofstream file(filename);
+	int num_guides = 62;
+	int guide_count = 0;
+	if (file.is_open()) {
+		while (guide_count < num_guides) {
+			file << "Guide" << guide_count << ",";
+			file << (rand() % 2) << ","; //gender
+			file << (rand() % 4) << ","; //class year
+			file << (rand() % 35) << ","; //major
+			file << (rand() % 51) << ","; //home state
+			file << (rand() % 5) << ","; //ethnicity
+			file << (rand() % 2) << ","; //public school
+			file << (rand() % 2) << ","; //athlete
+			file << (rand() % 2) << ","; //study abroad
+			file << ((rand() % 2) + 1) << ","; //number of tours
+			for (int i = 0; i < 20; i++) {
+				if ((double)rand()/RAND_MAX < 0.3) {
+					file << "1";
+				}
+				else {
+					file << "0";
+				}
+			}
+			guide_count++;
+			if (guide_count < num_guides) file <<'\n';
+		}
+		file.close();
+	}
+	else {
+		std::cout << "Unable to open file." << std::endl;
+	}
+	return;
+}
+
 int main(int argc, char* argv[]) {
-    std::cout << "Entered program." << std::endl;
+    DEBUG(std::cout << "Entered program." << std::endl);
 	
     srand(time(NULL));
     
@@ -125,9 +149,9 @@ int main(int argc, char* argv[]) {
 
 	char* fp = argv[1];//"spring2015_2.txt";
 
+	generate_test_file(fp);
     read_guide_file(fp);
-    
-    return 0;
+    //return 0;
 
 	std::vector<Schedule> population;
 	Schedule bestIndividual(guides.size());
@@ -137,7 +161,7 @@ int main(int argc, char* argv[]) {
         individual.evaluate();
         population.push_back(individual);
     }
-	while (generation < 3000) {
+	while (generation < 100) {
 		std::vector<Schedule> population_next;
 	    std::sort(population.begin(), population.end(), cmp);
 	    /*for (int i = 0; i < pop_size; i++) {
@@ -151,8 +175,8 @@ int main(int argc, char* argv[]) {
 			std::cout << std::endl;
 		}*/
 	    std::cout << std::endl;
-		std::cout << "Best Individual Fitness: " << population[0].getFitness() << std::endl;
-		std::cout << "Generation " << generation << std::endl;
+		DEBUG(std::cout << "Best Individual Fitness: " << population[0].getFitness() << std::endl);
+		DEBUG(std::cout << "Generation " << generation << std::endl);
 		if (generation % 5000 == 0 && generation != 0) {
 			MUTATE_PROB += 0.005;
 		}
@@ -181,7 +205,8 @@ int main(int argc, char* argv[]) {
 		generation++;
 		population = population_next;
 	}
-    bestIndividual.print();
+    DEBUG(bestIndividual.print());
+    bestIndividual.print_html();
     bestIndividual.valid(true);
 }
 

@@ -21,6 +21,7 @@ class Schedule {
     double getFitness();
 
     void print();
+    void print_html();
     int valid(bool print);
 	
   private:
