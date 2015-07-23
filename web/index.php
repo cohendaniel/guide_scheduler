@@ -1,14 +1,14 @@
 <?php
 
 	//echo "Hello everyone.";
-	//echo getcwd();
+	echo getcwd();
 	include('home.html');
 	require('./includes/init.php');
-	//require('../vendor/autoload.php');
+	require('../vendor/autoload.php');
 	
 	if (isset($_POST['enter_info'])) {
 		echo "PRESSED!";
-		header('Location: info.html');
+		header('Location: ./info.html');
 	}
 	
 	if (isset($_POST['submit'])) {
