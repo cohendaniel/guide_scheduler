@@ -1,10 +1,11 @@
 <?php
 
-	//echo "Hello everyone.";
+	echo "Hello everyone.";
 	echo getcwd();
 	include('home.html');
 	require('./includes/init.php');
-	//require('../vendor/autoload.php');
+	require('../vendor/autoload.php');
+	echo "started from the bottom now we here";
 	
 	if (isset($_POST['enter_info'])) {
 		echo "PRESSED!";
