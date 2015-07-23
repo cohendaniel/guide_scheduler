@@ -4,7 +4,7 @@
 	echo getcwd();
 	include('home.html');
 	require('./includes/init.php');
-	require('../vendor/autoload.php');
+	//require('../vendor/autoload.php');
 	
 	if (isset($_POST['enter_info'])) {
 		echo "PRESSED!";
