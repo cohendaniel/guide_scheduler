@@ -9,7 +9,7 @@
 	
 	$db_name = 'bowdoin-guides';
 	
-	if($connection = mysql_connect($db_host, $db_user, $db_password)) {
+	if($connection = new mysqli($db_host, $db_user, $db_password, $db)) {
 		
 		echo 'Connected to the database server. <br/>';
 		
