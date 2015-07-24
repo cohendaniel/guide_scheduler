@@ -1,10 +1,13 @@
 <?php
 	echo 'Including database.<br/>';
-	$db_host = 'localhost';
-	$db_user = 'root';
-	$db_password = '';
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 	
-	$db_name = 'guides';
+	$db_host = $url["host"];
+	$db_user = $url["user"];
+	$db_password = $url["pass"];
+	$db = substr($url["path"], 1);
+	
+	$db_name = 'bowdoin-guides';
 	
 	if($connection = mysql_connect($db_host, $db_user, $db_password)) {
 		
