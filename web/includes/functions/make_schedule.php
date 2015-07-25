@@ -13,7 +13,8 @@ if ($data = mysqli_query($connection, "SELECT * FROM guides")) {
 		fputcsv($output, $row);
 	}
 	fclose($output);
-	echo "about to execute program";
+	echo "about to execute program: ";
+	echo substr(sprintf('%o', fileperms('../../../Debug/guide_scheduler.exe')), -4);
 	$return = shell_exec("../../../Debug/guide_scheduler.exe $path");
 	
 	echo $return;
