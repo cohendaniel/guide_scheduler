@@ -15,15 +15,15 @@ function submit($name, $gender, $class_year, $major, $state, $ethnicity, $school
 	$friday = implode(",", $friday);*/
 	
 	if(!empty($name) && !empty($gender) && !empty($class_year) && !empty($major) && !empty($state) && !empty($ethnicity) && !empty($school) && !empty($athlete) && !empty($study_abroad) && !empty($num_tours)) {
-		$name = mysql_real_escape_string($name);
-		$gender = mysql_real_escape_string($gender);
-		$state = mysql_real_escape_string($state);
-		$major = mysql_real_escape_string($major);
-		$ethnicity = mysql_real_escape_string($ethnicity);
+		$name = mysqli_real_escape_string($name);
+		$gender = mysqli_real_escape_string($gender);
+		$state = mysqli_real_escape_string($state);
+		$major = mysqli_real_escape_string($major);
+		$ethnicity = mysqli_real_escape_string($ethnicity);
 		
 		$query = "INSERT INTO guides VALUES ('$name', '$gender', '$class_year', '$major', '$state', '$ethnicity', '$school', '$athlete', '$study_abroad', '$num_tours', '$avail')"; 
 
-		if ($run = mysql_query($query)) {
+		if ($run = mysqli_query($query)) {
 			echo "Query accepted.<br/>";
 			return true;
 		} else {
