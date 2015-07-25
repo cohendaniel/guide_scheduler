@@ -1,7 +1,7 @@
 <?php
 	echo 'Including database.<br/>';
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-	
+
 	$db_host = $url["host"];
 	$db_user = $url["user"];
 	$db_password = $url["pass"];

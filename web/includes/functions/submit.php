@@ -1,5 +1,7 @@
 <?php
 echo 'Including submit function.<br/>';
+
+echo $db_name;
 function submit($name, $gender, $class_year, $major, $state, $ethnicity, $school, $athlete, $study_abroad, $num_tours, $avail) {
 	
 	echo $name, $gender, $class_year, $major, $state, $ethnicity, $school, $athlete, $study_abroad, $num_tours;
@@ -15,15 +17,15 @@ function submit($name, $gender, $class_year, $major, $state, $ethnicity, $school
 	$friday = implode(",", $friday);*/
 	
 	if(!empty($name) && !empty($gender) && !empty($class_year) && !empty($major) && !empty($state) && !empty($ethnicity) && !empty($school) && !empty($athlete) && !empty($study_abroad) && !empty($num_tours)) {
-		$name = mysqli_real_escape_string($name);
-		$gender = mysqli_real_escape_string($gender);
-		$state = mysqli_real_escape_string($state);
-		$major = mysqli_real_escape_string($major);
-		$ethnicity = mysqli_real_escape_string($ethnicity);
-		
+		$name = mysqli_real_escape_string($connection, $name);
+		$gender = mysqli_real_escape_string($connection, $gender);
+		$state = mysqli_real_escape_string($connection, $state);
+		$major = mysqli_real_escape_string($connection, $major);
+		$ethnicity = mysqli_real_escape_string($connection, $ethnicity);
+
 		$query = "INSERT INTO guides VALUES ('$name', '$gender', '$class_year', '$major', '$state', '$ethnicity', '$school', '$athlete', '$study_abroad', '$num_tours', '$avail')"; 
 
-		if ($run = mysqli_query($query)) {
+		if ($run = mysqli_query($connection, $query)) {
 			echo "Query accepted.<br/>";
 			return true;
 		} else {
