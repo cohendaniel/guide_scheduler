@@ -15,8 +15,8 @@ if ($data = mysqli_query($connection, "SELECT * FROM guides")) {
 	fclose($output);
 	echo "about to execute program: ";
 	chmod("../../../Debug/guide_scheduler.exe", 0755);
-	echo substr(sprintf('%o', fileperms('../../../Debug/guide_scheduler')), -4);
-	$return = shell_exec("../../../Debug/guide_scheduler $path");
+	echo substr(sprintf('%o', fileperms('../../../Debug/guide_scheduler.exe')), -4);
+	$return = shell_exec("../../../Debug/guide_scheduler.exe $path");
 	
 	echo $return;
 	return true;
