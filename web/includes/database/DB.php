@@ -9,7 +9,7 @@
 	
 	$db_name = 'guides';
 	
-	if($connection = mysqli_connect($db_host, $db_user, $db_password) {
+	if($connection = mysqli_connect($db_host, $db_user, $db_password, $db)) {
 		
 		echo 'Connected to the database server. <br/>';
 		
