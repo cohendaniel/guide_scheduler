@@ -3,7 +3,7 @@ echo 'Including submit function.<br/>';
 
 echo $db_name;
 function submit($name, $gender, $class_year, $major, $state, $ethnicity, $school, $athlete, $study_abroad, $num_tours, $avail) {
-	
+	require_once('./includes/database/DB.php');
 	echo $name, $gender, $class_year, $major, $state, $ethnicity, $school, $athlete, $study_abroad, $num_tours;
 	
 	// To avoid array to string conversion. TODO: make into loop for
