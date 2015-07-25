@@ -7,7 +7,7 @@
 	$db_password = $url["pass"];
 	$db = substr($url["path"], 1);
 	
-	$db_name = 'bowdoin-guides';
+	$db_name = 'guides';
 	
 	if($connection = new mysqli($db_host, $db_user, $db_password, $db)) {
 		
