@@ -13,7 +13,7 @@
 		
 		echo 'Connected to the database server. <br/>';
 		
-		if($databse = mysqli_select_db($connection, $db_name)) {
+		if($database = mysqli_select_db($connection, $db)) {
 			echo 'Database has been selected. <br/>';
 		} else {
 			echo 'Database was not found. <br/>';
