@@ -1,4 +1,5 @@
 <?php
+	echo getcwd();
 	include('home.html');
 	require('./includes/init.php');
 	require('../vendor/autoload.php');
@@ -47,7 +48,7 @@
 			echo 'Password field not filled out.';
 		}
 		elseif ($_POST['username'] == 'admissions' && $_POST['password'] == 'abc123') {
-			header('Location: ../secure/admin.html');
+			header('Location: ./secure/admin.html');
 		}
 		else {
 			echo 'Invalid login. <br/>';
