@@ -14,7 +14,7 @@ require_once('includes/database/DB.php');
 		$("input").click(function() {
 			console.log("clicked");
 			$.ajax({
-				url: "../web/includes/functions/make_schedule.php",
+				url: "./includes/functions/make_schedule.php",
 				success: function(result) {
 					var output = result.split(",");
 					var count = 0;
