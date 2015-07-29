@@ -9,8 +9,8 @@ if ($data = mysqli_query($connection, "SELECT * FROM guides")) {
 		fputcsv($output, $row);
 	}
 	fclose($output);
-	//chmod("./guide_scheduler_windows.exe", 0755);
-	//echo "changed permissions";
+	chmod("./guide_scheduler", 0755);
+	echo "changed permissions";
 	
 	$return = shell_exec("./guide_scheduler $path");
 	
