@@ -39,7 +39,7 @@ double Schedule::evaluate() {
     double avail_score = 0;
     double attribute_score = 0;
     for (unsigned int i = 0; i < data.size(); i++) {
-        if (guides[data[i]]->times[i/3]) {
+        if (guides[data[i]]->times[i/3] == '1') {
             avail_score++;
         } 
     }
@@ -117,14 +117,14 @@ int Schedule::valid(bool print) {
 	std::vector<int> in_schedule (guides.size(), 0);
 	for (unsigned int i = 0; i < data.size(); i++) {
 		in_schedule[data[i]]++;
-		if (!guides[data[i]]->times[i/3]) {
+		if (guides[data[i]]->times[i/3] == '0') {
 			if (print)std::cout << "Invalid guide #" << data[i] << " (" << guides[data[i]]->name << ") at " << i/3 << std::endl;
 			//valid = false;
 			count++;
 		}
 		if (i % 3 == 0) {
-			if (guides[data[i]] == guides[data[i+1]] || guides[data[i]] == guides[data[i+2]] || guides[data[i+1]] == guides[data[i+2]]) {
-				if (print) std::cout << "Multiple guides in same slot" << std::endl;
+			if (data[i] == data[i+1] || data[i] == data[i+2] || data[i+1] == data[i+2]) {
+				if (print) std::cout << "Same guide in slot " << i/3 << std::endl;
 				//valid = false;
 				count++;
 			}

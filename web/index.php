@@ -6,7 +6,7 @@
 	
 	if (isset($_POST['enter_info'])) {
 		echo "PRESSED!";
-		header('Location: ./info.html');
+		header('Location: ./info.php');
 	}
 	
 	if (isset($_POST['submit'])) {
@@ -47,11 +47,11 @@
 		elseif (empty($_POST['password'])) {
 			echo 'Password field not filled out.';
 		}
-		elseif ($_POST['username'] == 'admissions' && $_POST['password'] == 'abc123') {
-			header('Location: ./secure/admin.html');
+		elseif (validate_login($_POST['username'], $_POST['password']) == true) {
+			header('Location: admin.php');
 		}
 		else {
-			echo 'Invalid login. <br/>';
+			echo 'Invalid login.';
 		}
 	}
 	

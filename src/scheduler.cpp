@@ -77,6 +77,8 @@ void read_guide_file(char* filename) {
 			std::getline(ss, study_abroad, ',');
 			std::getline(ss, num_tours, ',');
 			std::getline(ss, avail, ',');
+
+			//std::cout << "Guide" << num_guides << ": " << avail << std::endl;
 				
 			Guide* guide = new Guide(name, std::atoi(class_year.c_str()), major, gender, state, ethnicity, 
 						to_bool(public_school), to_bool(athlete), to_bool(study_abroad), 
@@ -86,7 +88,7 @@ void read_guide_file(char* filename) {
 					  << guide->athlete << guide->study_abroad << guide->num_tours << ": ";)
 			
 			for (int i = 0; i < 20; i++) {
-				if (guide->times[i] == 1) {
+				if (guide->times[i] == '1') {
 					slots[i].push_back(num_guides);
 				}
 				DEBUG(std::cout << guide->times[i];)
@@ -104,7 +106,7 @@ void read_guide_file(char* filename) {
 
 void generate_test_file(char* filename) {
 	std::ofstream file(filename);
-	int num_guides = 62;
+	int num_guides = 52;
 	int guide_count = 0;
 	if (file.is_open()) {
 		while (guide_count < num_guides) {
@@ -117,9 +119,15 @@ void generate_test_file(char* filename) {
 			file << (rand() % 2) << ","; //public school
 			file << (rand() % 2) << ","; //athlete
 			file << (rand() % 2) << ","; //study abroad
-			file << ((rand() % 2) + 1) << ","; //number of tours
+			if ((double)rand()/RAND_MAX < 0.2) {
+				file << "2,";
+			}
+			else {
+				file << "1,";
+			}
+			//file << ((rand() % 2) + 1) << ","; //number of tours
 			for (int i = 0; i < 20; i++) {
-				if ((double)rand()/RAND_MAX < 0.3) {
+				if ((double)rand()/RAND_MAX < 0.17) {
 					file << "1";
 				}
 				else {
@@ -161,7 +169,7 @@ int main(int argc, char* argv[]) {
         individual.evaluate();
         population.push_back(individual);
     }
-	while (generation < 100) {
+	while (generation < 1000) {
 		std::vector<Schedule> population_next;
 	    std::sort(population.begin(), population.end(), cmp);
 	    /*for (int i = 0; i < pop_size; i++) {
@@ -174,7 +182,7 @@ int main(int argc, char* argv[]) {
 			}
 			std::cout << std::endl;
 		}*/
-	    std::cout << std::endl;
+	    //std::cout << std::endl;
 		DEBUG(std::cout << "Best Individual Fitness: " << population[0].getFitness() << std::endl);
 		DEBUG(std::cout << "Generation " << generation << std::endl);
 		if (generation % 5000 == 0 && generation != 0) {

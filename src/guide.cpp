@@ -16,11 +16,11 @@ Guide::Guide(std::string name, int class_year, std::string major, std::string ge
              athlete(athlete), 
 			 study_abroad(study_abroad),
 			 num_tours(num_tours),
-			 times(avail)
+			 times(avail.begin(), avail.end())
 			 {}
 
 
-void Guide::set_time (std::string day, std::string time) {
+/*void Guide::set_time (std::string day, std::string time) {
     int day_num, time_num;
     if (!day.compare("Monday"))
         day_num = 0;
@@ -47,8 +47,8 @@ void Guide::set_time (std::string day, std::string time) {
         std::cout << "Invalid time." << std::endl;
 
     //std::cout << day_num*4 + time_num << std::endl;
-    times[(day_num * 4) + time_num] = 1;
-}
+    //times[(day_num * 4) + time_num] = 1;
+}*/
 
 /*int main() {
     

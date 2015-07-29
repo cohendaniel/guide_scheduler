@@ -6,23 +6,22 @@
 </head>
 <body class="no-margin">
 <h1>Bowdoin College <em>Tour Guide Scheduler</em></h1>
-
-<form enctype="application/x-www-form-urlencoded" method="post" target="_self" action="index.php">
-	<p style="text-align: center;"><input name="enter_info" type="submit" value="Enter Information" /></p>
-	<fieldset>
+<form method="post" action="index.php">
+	<p style="text-align: center;"><b>Guides: </b><input name="enter_info" type="submit" value="Enter Information" /></p>
+	<fieldset style="margin-top: 100px">
 		<legend><b>Admin Login </b></legend>
-		
 		<div style = "text-align: center";>
 			<label for='username'><b>Username:</b></label>
 			<input type='text' name = 'username' id='username'/>
 			<br></br>
 			<label for='password'><b>Password:</b></label>
-			<input type='text' name = 'password' id='password'/>
-		</div>
-		
+			<input type='password' name = 'password' id='password'/>
+		</div>	
 		<p style="text-align: center;"><input name="admin" type="submit" value="Login" /></p>
 	</fieldset>
 </form>
+<div id="fail">
+</div>
 
 </body>
 </html>

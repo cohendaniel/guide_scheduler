@@ -1,0 +1,32 @@
+Africana Studies,africana_studies
+Anthropology,anthropology
+Art History,art_history
+Asian Studies,asian_studies
+Biochemistry,biochemistry
+Biology,biology
+Chemistry,chemistry
+Classics,classics
+Computer Science,computer_science
+Earth and Oceanographic Science,eos
+Economics,economics
+English,english
+Environmental Studies,environmental_studies
+French,french
+Gender and Women's Studies,gws
+German,german
+Government and Legal Studies,gov
+History,history
+Italian,italian
+Latin American Studies,latin_american_studies
+Mathematics,mathematics
+Music,music
+Neuroscience,neuroscience
+Philosophy,philosophy
+Physics,physics
+Psychology,psychology
+Religion,religion
+Romance Languages,romance_languages
+Russian,russian
+Sociology,sociology
+Spanish,spanish
+Visual Arts,visual_arts
