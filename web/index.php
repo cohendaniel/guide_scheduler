@@ -33,7 +33,7 @@
 			}
 		}
 		
-		if(submit($_POST['guidename'], $_POST['gender'], $_POST['class_year'], $_POST['major'], $_POST['state'], $_POST['ethnicity'], $_POST['school'], $_POST['athlete'], $_POST['study_abroad'], $_POST['num_tours'], $avail)) {
+		if(submit($_POST['guidename'], $_POST['gender'], $_POST['class_year'], $_POST['major'], $_POST['state'], $_POST['ethnicity'], $_POST['school'], $_POST['athlete'], $_POST['study_abroad'], $_POST['num_tours'], $avail, $_POST['saturday'])) {
 			echo 'Submitted! <br/>';
 		} else {
 			echo 'Failed to submit... <br/>';

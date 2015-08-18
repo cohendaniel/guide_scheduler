@@ -123,6 +123,23 @@
 			<input name="friday[]" type="checkbox" value="130"/>1:30
 			<input name="friday[]" type="checkbox" value="330"/>3:30
 		</p>
+		<div>
+			<b>Saturday </b><em>(must give one per semester)</em>
+				<p>
+					<input name = "saturday[]" type="checkbox" value="9/5">9/5
+					<input name = "saturday[]" type="checkbox" value="9/12">9/12
+					<input name = "saturday[]" type="checkbox" value="9/19">9/19
+					<input name = "saturday[]" type="checkbox" value="9/26">9/26
+					<input name = "saturday[]" type="checkbox" value="10/3">10/3
+				</p>
+				<p>
+					<input name = "saturday[]" type="checkbox" value="10/10">10/10
+					<input name = "saturday[]" type="checkbox" value="10/17">10/17
+					<input name = "saturday[]" type="checkbox" value="10/24">10/24
+					<input name = "saturday[]" type="checkbox" value="10/31">10/31
+					<input name = "saturday[]" type="checkbox" value="11/6">11/6
+				</p>
+		</div>
 	</div>
 	<div class = "clear"></div>
 	<p style="text-align: center;"><input name="submit" type="submit" value="Submit" /></p>

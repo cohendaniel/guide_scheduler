@@ -14,7 +14,7 @@ if ($data = mysqli_query($connection, "SELECT * FROM guides")) {
 	
 	$return = shell_exec("./guide_scheduler $path");
 	
-	//local Windows access
+	//local Windows access -- use below instead
 	//$return = shell_exec("..\..\..\Debug\guide_scheduler.exe $path");
 	
 	echo $return;
