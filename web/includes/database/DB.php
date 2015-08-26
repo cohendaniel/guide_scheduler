@@ -1,5 +1,5 @@
 <?php
-	echo 'Including database.<br/>';
+	error_log('Including database.<br/>');
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 	$db_host = $url["host"];
@@ -11,14 +11,14 @@
 	
 	if($connection = mysqli_connect($db_host, $db_user, $db_password, $db)) {
 		
-		echo 'Connected to the database server. <br/>';
+		error_log('Connected to the database server. <br/>');
 		
 		if($database = mysqli_select_db($connection, $db)) {
-			echo 'Database has been selected. <br/>';
+			error_log('Database has been selected. <br/>');
 		} else {
-			echo 'Database was not found. <br/>';
+			error_log('Database was not found. <br/>');
 		}
 	} else {
-		echo 'Unable to connect to MySql server. <br/>';
+		error_log('Unable to connect to MySql server. <br/>');
 	}
 ?>
