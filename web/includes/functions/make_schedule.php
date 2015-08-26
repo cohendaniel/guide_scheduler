@@ -1,5 +1,8 @@
 <?php
-require_once('../database/DB_local.php');
+require_once('../database/DB.php');
+
+//local Windows access -- use below instead
+//require_once('../database/DB_local.php');
 if ($data = mysqli_query($connection, "SELECT * FROM guides")) {
 	$path = './outputguides.csv';
 	$output = fopen("$path", 'w');
