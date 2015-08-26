@@ -69,6 +69,10 @@ th.vert {
 	width: 50%;
 }
 
+#report {
+	width: 1000px;
+}
+
 .b {
 	font-weight: bold;
 }

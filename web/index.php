@@ -1,5 +1,5 @@
 <?php
-	echo getcwd();
+	//echo getcwd();
 	include('home.html');
 	require('./includes/init.php');
 	require('../vendor/autoload.php');

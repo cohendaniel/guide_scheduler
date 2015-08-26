@@ -1,5 +1,5 @@
 <?php
-echo 'Including submit function.<br/>';
+//echo 'Including submit function.<br/>';
 
 //echo $db_name;
 function submit($name, $gender, $class_year, $major, $state, $ethnicity, $school, $athlete, $study_abroad, $num_tours, $avail, $saturday) {

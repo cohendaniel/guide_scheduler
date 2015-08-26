@@ -1,5 +1,5 @@
 <?php
-require_once('../database/DB.php');
+require_once('../database/DB_local.php');
 if ($data = mysqli_query($connection, "SELECT * FROM guides")) {
 	$path = './outputguides.csv';
 	$output = fopen("$path", 'w');
@@ -10,7 +10,7 @@ if ($data = mysqli_query($connection, "SELECT * FROM guides")) {
 	}
 	fclose($output);
 	chmod("./guide_scheduler", 0755);
-	echo "changed permissions";
+	//echo "changed permissions";
 	
 	$return = shell_exec("./guide_scheduler $path");
 	

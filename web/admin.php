@@ -21,7 +21,7 @@ require_once('includes/database/DB.php');
 				success: function(result) {
 					var output = result.split(",");
 					var count = 0;
-					$("td").html(function(n){
+					$("#schedule td").html(function(n){
 						count++;
 						console.log(n + "->" + (((n%5)*12)+Math.floor(n/5)) + " (" + output[((n%5)*12)+Math.floor(n/5)] + ")");
 						return output[((n%5)*12)+Math.floor(n/5)];
@@ -42,7 +42,7 @@ require_once('includes/database/DB.php');
 </div>
 
 <br></br>
-<table>
+<table id = "schedule">
 	<tr>
 		<th></th>
 		<th class="horiz">Monday</th>
@@ -149,14 +149,13 @@ require_once('includes/database/DB.php');
 		Guides who have submitted forms:
 	</h3>
 	<?php
-	$data = mysqli_query($connection, "SELECT * FROM guides");
+	$data = mysqli_query($connection, "SELECT Name FROM guides ORDER BY Name");
 	$num = 1;
-	while ($row = mysqli_fetch_assoc($data)) {
-		echo $num.": ".$row["Name"]."	".translate_availability($row["Availability"]);
-		echo "<br/>";
+	while($row = mysqli_fetch_array($data)) {
+		echo $num.".  ".$row[0]."<br/>";
 		$num++;
 	}
-	function translate_availability($avail) {
+	/*function translate_availability($avail) {
 		$ret = "";
 		for ($i = 0; $i < 20; $i++) {
 			if ($avail[$i] == 1) {
@@ -198,8 +197,71 @@ require_once('includes/database/DB.php');
 			}
 		}
 		return trim($ret, ", ");
-	}
+	}*/
 	?>
+	<h3>
+		Report
+	</h3>
+	<div id = "M930">
+	<?php
+		$guides_in_slots = array();
+		for ($i = 1; $i <= 20; $i++) {
+			$guides_in_slots[$i] = "";
+			$sql = "SELECT * FROM guides WHERE SUBSTRING(Availability,".$i.", 1) = '1'";
+			$slot = mysqli_query($connection, $sql);
+			while ($guide_in_slot = mysqli_fetch_assoc($slot)) {
+				$guides_in_slots[$i] = $guides_in_slots[$i].$guide_in_slot["Name"]."<br/>";
+				//echo $guide_in_slot["Name"]."<br/>";
+			}
+		}
+	?>
+	<table id = "report">
+		<tr>
+			<th></th>
+			<th class="horiz">Monday</th>
+			<th class="horiz">Tuesday</th>
+			<th class="horiz">Wednesday</th>
+			<th class="horiz">Thursday</th>
+			<th class="horiz">Friday</th>
+		</tr>
+		<tr>
+			<th rowspan="1" class="vert">9:30</th>
+			<td><?php echo $guides_in_slots[1] ?></td>
+			<td><?php echo $guides_in_slots[5] ?></td>
+			<td><?php echo $guides_in_slots[9] ?></td>
+			<td><?php echo $guides_in_slots[13] ?></td>
+			<td><?php echo $guides_in_slots[17] ?></td>
+		</tr>
+		<tr>
+			<th rowspan="1" class="vert">11:30</th>
+			<td><?php echo $guides_in_slots[2] ?></td>
+			<td><?php echo $guides_in_slots[6] ?></td>
+			<td><?php echo $guides_in_slots[10] ?></td>
+			<td><?php echo $guides_in_slots[14] ?></td>
+			<td><?php echo $guides_in_slots[18] ?></td>
+		</tr>
+		<tr>
+			<th rowspan="1" class="vert">1:30</th>
+			<td><?php echo $guides_in_slots[3] ?></td>
+			<td><?php echo $guides_in_slots[7] ?></td>
+			<td><?php echo $guides_in_slots[11] ?></td>
+			<td><?php echo $guides_in_slots[15] ?></td>
+			<td><?php echo $guides_in_slots[19] ?></td>
+		</tr>
+		<tr>
+			<th rowspan="1" class="vert">3:30</th>
+			<td><?php echo $guides_in_slots[4] ?></td>
+			<td><?php echo $guides_in_slots[8] ?></td>
+			<td><?php echo $guides_in_slots[12] ?></td>
+			<td><?php echo $guides_in_slots[16] ?></td>
+			<td><?php echo $guides_in_slots[20] ?></td>
+		</tr>
+		
+	</table>
+	<div>
+		
+	</div>
+	
 </div>
 </body>
 </html>
