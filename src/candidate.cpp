@@ -118,7 +118,7 @@ int Schedule::valid(bool print) {
 	for (unsigned int i = 0; i < data.size(); i++) {
 		in_schedule[data[i]]++;
 		if (guides[data[i]]->times[i/3] == '0') {
-			if (print)std::cout << "Invalid guide #" << data[i] << " (" << guides[data[i]]->name << ") at " << i/3 << std::endl;
+			if (print)std::cout << guides[data[i]]->name << "invalid position at " << i/3 << std::endl;
 			//valid = false;
 			count++;
 		}
@@ -130,9 +130,16 @@ int Schedule::valid(bool print) {
 			}
 		}
 		if (in_schedule[data[i]] > guides[data[i]]->num_tours) {
-			if (print) std::cout << "Guide " << data[i] << " multiple times." << std::endl;
+			if (print) std::cout << guides[data[i]]->name << " multiple times." << std::endl;
 			//valid = false;
 			count++;
+		}
+	}
+	if (print) {
+		for (unsigned int i = 0; i < data.size(); i++) {
+			if (in_schedule[i] == 0) {
+				std::cout << guides[i]->name << " not included in schedule." << std::endl;
+			}
 		}
 	}
 	if (count == 0) return 1;

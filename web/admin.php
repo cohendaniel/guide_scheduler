@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
-require_once('includes/database/DB.php');
+//require_once('includes/database/DB.php');
 
 //local windows access -- use below instead
-//require_once('./includes/database/DB_local.php');
+require_once('./includes/database/DB_local.php');
 ?>
 <html>
 <head>

@@ -3,9 +3,9 @@
 
 //echo $db_name;
 function submit($name, $gender, $class_year, $major, $state, $ethnicity, $school, $athlete, $study_abroad, $num_tours, $avail, $saturday) {
-	require_once('./includes/database/DB.php');
+	//require_once('./includes/database/DB.php');
 	//local windows access -- use below instead
-	//require_once('./includes/database/DB_local.php');
+	require_once('./includes/database/DB_local.php');
 	echo $name, $gender, $class_year, $major, $state, $ethnicity, $school, $athlete, $study_abroad, $num_tours;
 	
 	if(!empty($name) && !empty($gender) && !empty($class_year) && !empty($major) && !empty($state) && !empty($ethnicity) && !empty($school) && !empty($athlete) && !empty($study_abroad) && !empty($num_tours)) {
@@ -14,9 +14,6 @@ function submit($name, $gender, $class_year, $major, $state, $ethnicity, $school
 		$state = mysqli_real_escape_string($connection, $state);
 		$major = mysqli_real_escape_string($connection, $major);
 		$ethnicity = mysqli_real_escape_string($connection, $ethnicity);
-		
-		//$query_rows = mysqli_query($connection, "SELECT * FROM guides");
-		//$id = mysqli_num_rows($query_rows);
 
 		$saturday_str = implode(", ", $saturday);
 		$query = "INSERT INTO guides VALUES (NULL, '$name', '$gender', '$class_year', '$major', '$state', '$ethnicity', '$school', '$athlete', '$study_abroad', '$num_tours', '$avail', '$saturday_str')"; 

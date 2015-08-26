@@ -8,7 +8,7 @@
 #define NUM_SLOTS 60
 
 extern std::map<int, Guide*> guides;
-extern std::vector<std::vector<int>> slots;
+extern std::vector<std::vector<int> > slots;
 
 class Schedule {
   public:
